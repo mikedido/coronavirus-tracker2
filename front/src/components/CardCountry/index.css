@@ -1,0 +1,17 @@
+.card_wrapper {
+    margin-left: 10px;
+    border: 1px;
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+
+.card_flag {
+    float:left; /* add this */
+    border: 1px;
+}
+
+.card_country_name {
+    margin: 10px 20px 20px 30px;
+    border: 1px;
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+    font-size: 20px;
+}

@@ -1,0 +1,25 @@
+# API
+.gitlabenv
+.vscode/
+venv/
+.venv/
+__pycache__
+creds/*
+creds*
+*.zip
+.terraform
+.terraform*
+.terraform/*
+.idea*
+.idea/*
+*.pyc
+*.icloud
+.coverage*
+man/*
+lib/python.2.7/*
+.DS_Store
+*.p12
+*.pem
+
+# FRONT
+/node_modules

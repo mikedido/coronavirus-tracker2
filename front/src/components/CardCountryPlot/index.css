@@ -1,0 +1,18 @@
+.card-plot{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-color: #e2e3e9;
+    border-radius: 5px;
+    transition: 200ms;
+    margin: 10px 20px 20px 30px;
+}
+
+.selector-year {
+    width: 120px;
+}
+
+.chart {
+    display: flex;   
+    z-index: unset;
+}

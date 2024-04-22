@@ -1,0 +1,17 @@
+.search {
+    opacity: 0.8;
+    width: 220px;
+    height: 30px;
+    position: relative;
+    padding-left: 5px;
+}
+
+.box {
+    z-index: 1000;
+    width: 20rm;
+    position: relative;
+    border: 2px outset grey;
+    border-radius: 10px;
+    background-color: #d1d1d7;
+    padding-left: 10px;
+}
