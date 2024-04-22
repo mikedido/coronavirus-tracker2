@@ -8,13 +8,13 @@ INFO_COUNTRY_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/ma
 
 
 frequency_format = {
-    "year" : "%Y",
-    "month" : "%Y-%m",
-    "day" : "%Y-%m-%d",
+    "year": "%Y",
+    "month": "%Y-%m",
+    "day": "%Y-%m-%d",
 }
 
-class JHURepository:
 
+class JHURepository:
     # @staticmethod
     # def _read_data(data_url: str, use_columns: list[str]) -> pd.DataFrame:
     #     return pd.read_csv(
@@ -36,11 +36,20 @@ class JHURepository:
 
     #     return df_grouped
 
-
-    def get_daily_report_by_country_code(self, country_code: str, date: str = "03-09-2023"):
+    def get_daily_report_by_country_code(
+        self, country_code: str, date: str = "03-09-2023"
+    ):
         df = pd.read_csv(
             DATA_DAILY_REPORTS_BASE_URL % date,
-            usecols=["Country_Region", "Confirmed", "Deaths", "Recovered", "Active", "Incident_Rate", "Case_Fatality_Ratio"],
+            usecols=[
+                "Country_Region",
+                "Confirmed",
+                "Deaths",
+                "Recovered",
+                "Active",
+                "Incident_Rate",
+                "Case_Fatality_Ratio",
+            ],
         )
         df.columns = df.columns.str.lower()
         data = df.groupby("country_region").sum().reset_index()
@@ -63,10 +72,11 @@ class JHURepository:
         df.columns = df.columns.str.lower()
         return df.groupby("country_region").sum().reset_index()
 
-
-    def get_timeseries_by_country_code_and_category_and_frequency(self, country_name: str, category: str, frequency: str, data_year: str):
+    def get_timeseries_by_country_code_and_category_and_frequency(
+        self, country_name: str, category: str, frequency: str, data_year: str
+    ):
         df = pd.read_csv(DATE_TIME_SERIES_BASE_URL % category)
-        
+
         df.columns = df.columns.str.lower()
 
         df = df.drop(labels=["lat", "long", "province/state"], axis=1)
@@ -74,14 +84,17 @@ class JHURepository:
         data = df.groupby("country/region").sum().reset_index()
 
         # new_data = JHURepository._organized_data_by_frequency(data, frequency=frequency_format[frequency])
-        new_data = DataUtils.organized_data_by_frequency(data, frequency=frequency_format[frequency])
+        new_data = DataUtils.organized_data_by_frequency(
+            data, frequency=frequency_format[frequency]
+        )
 
         new_data = new_data[new_data["country/region"] == country_name]
 
-        df_filtered = new_data[[col for col in new_data.columns if col.startswith(data_year)]]
+        df_filtered = new_data[
+            [col for col in new_data.columns if col.startswith(data_year)]
+        ]
 
         return df_filtered
-
 
     def get_country_info(self, country_code: str):
         df = pd.read_csv(

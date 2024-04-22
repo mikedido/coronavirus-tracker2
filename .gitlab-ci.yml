@@ -1,0 +1,17 @@
+stages:
+  dependencies
+  tests
+
+
+dependencies_job:
+  stage: dependencies
+  script:
+    - echo 'Running dependencies ...'
+
+test_job:
+  stage: tests
+  script:
+    - echo 'Running tests ...'
+
+
+

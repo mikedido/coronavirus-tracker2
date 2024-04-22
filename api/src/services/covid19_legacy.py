@@ -70,7 +70,15 @@ def get_daily_reports_by_country_code(
     """
     df = pd.read_csv(
         DATA_DAILY_REPORTS_BASE_URL % date,
-        usecols=["Country_Region", "Confirmed", "Deaths", "Recovered", "Active", "Incident_Rate", "Case_Fatality_Ratio"],
+        usecols=[
+            "Country_Region",
+            "Confirmed",
+            "Deaths",
+            "Recovered",
+            "Active",
+            "Incident_Rate",
+            "Case_Fatality_Ratio",
+        ],
     )
     df.columns = df.columns.str.lower()
     data = df.groupby("country_region").sum().reset_index()

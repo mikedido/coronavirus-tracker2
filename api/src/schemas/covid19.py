@@ -26,7 +26,6 @@ class CovidRegion(BaseModel):
     country_code: str | None = None
 
 
-
 class CountryMap(BaseModel):
     country_region: str
     country_code: str

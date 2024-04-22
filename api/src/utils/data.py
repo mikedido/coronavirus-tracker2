@@ -2,7 +2,6 @@ import pandas as pd
 
 
 class DataUtils:
-
     @staticmethod
     def get_data(data_url: str, use_columns: list[str]) -> pd.DataFrame:
         return pd.read_csv(
@@ -20,6 +19,7 @@ class DataUtils:
         )
 
         df_grouped = df_dates.groupby(df_dates.columns, axis=1).sum()
+
         df_grouped[droped_column] = data[droped_column]
 
         return df_grouped
